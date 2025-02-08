@@ -1,5 +1,6 @@
 import { IsEmail, IsString, MinLength } from 'class-validator';
-export class CreateVendorDto {
+
+export class CreateStaffDto {
   @IsString()
   @MinLength(3)
   name: string;
@@ -10,4 +11,7 @@ export class CreateVendorDto {
   @IsString()
   @MinLength(6)
   password: string;
+
+  @IsString()
+  position: string;
 }

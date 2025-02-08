@@ -36,3 +36,16 @@ model Staff {
 
   @@map("staff")
 }
+
+model User {
+  id                String   @id @default(uuid())
+  email             String   @unique
+  firstName         String
+  lastName          String
+  passwordHash      String
+  phoneNumber       String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("users")
+}
