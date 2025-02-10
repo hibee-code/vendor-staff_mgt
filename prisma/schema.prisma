@@ -14,16 +14,16 @@ datasource db {
 }
 
 
-
 model Vendor {
   id       String  @id @default(uuid())
   name     String  @unique
   email    String  @unique
   password String
-  staff    Staff[]
+  staff    Staff[] @relation(onDelete: Cascade)
 
   @@map("vendors")
 }
+
 
 model Staff {
   id       String @id @default(uuid())

@@ -64,4 +64,18 @@ export class StaffService {
       },
     });
   }
+  async deleteVendor(vendorId: string) {
+    const staffCount = await this.prisma.staff.count({
+      where: { vendorId },
+    });
+  
+    if (staffCount > 0) {
+      throw new ConflictException('Cannot delete vendor with active staff members');
+    }
+  
+    return this.prisma.vendor.delete({
+      where: { id: vendorId },
+    });
+  }
+  
 }
